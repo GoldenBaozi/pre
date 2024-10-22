@@ -1,0 +1,58 @@
+% \documentclass[
+%   UTF8,
+%   xcolor={dvipsnames,rgb},
+%   hyperref={colorlinks, citecolor=orange, linkcolor=black},
+%   ]{beamer}
+\usepackage{xcolor}
+\usepackage{appendixnumberbeamer}
+\usepackage{bookmark}
+\usepackage{ctex}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{fontspec}
+% \usepackage[english]{babel}
+% \usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{unicode-math}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{color}
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    sorting = nty,
+    hyperref=true,
+    doi=false
+]{biblatex}
+
+\setbeamerfont{footnote}{size=\tiny}
+
+\usetheme[numbering=none]{Metropolis}
+
+\usefonttheme{professionalfonts}
+\setmainfont[Scale=1.0]{STIX Two Text}
+\setsansfont[
+    BoldFont={STIX Two Text SemiBold},
+    ItalicFont={STIX Two Text Italic}
+    ]{Arial}
+\setmathfont{STIX Two Math}
+\setCJKmainfont{KaiTi}[BoldFont=SimHei, ItalicFont=KaiTi]
+\setCJKsansfont{KaiTi}[BoldFont=SimHei, ItalicFont=KaiTi]
+
+\setbeamertemplate{caption}[numbered]
+\setlength\bibitemsep{1.25\itemsep}
+
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{itemize item}[ball]
+\setbeamertemplate{theorems}[ams style]
+% \numberwithin{figure}{section}
+
+\setbeamertemplate{footline}[frame number]
+
+\theoremstyle{remark}
+\newtheorem{assump}[theorem]{Identification Assumption}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{0.5em} }{\enditemize}
