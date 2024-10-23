@@ -75,7 +75,7 @@
 
 \section{计量模型}
 
-\begin{frame}
+\begin{frame}[label=main]
     \frametitle{检验目标}
     如前所述，希望检验新因子的SDF loading，来判断其是否具有截面解释能力。这又分为两步，第一步，对每个资产在时间序列上计算其与因子的协方差，得到协方差矩阵 \(\hat{C}_g, \hat{C}_h\)
     \[
@@ -85,31 +85,11 @@
         \mathrm{Cov}(r_{\cdot}^{N},g_{\cdot}^{1}) & \cdots & \mathrm{Cov}(r_{\cdot}^{N},g_{\cdot}^{d})
         \end{pmatrix}
     .\]
-    其 \((i,j)\) 个元素可以理解为因子 \(g^{j}\) 在资产 \(i\) 上的风险暴露 (文中因子均指因子收益，如SMB)。
+    其 \((i,j)\) 个元素可以理解为因子 \(g^{j}\) 在资产 \(i\) 上的风险暴露 (文中因子均指因子收益，如SMB)。\hyperlink{appendix1}{\beamerbutton{about SDF}}
     \\
     \vspace{1em}
     第二步，用资产 \(i=1, \ldots ,N\) 的时序均值对风险暴露矩阵跑一个截面回归，得到SDF loading \(\lambda_g\)，对其做统计检验。问题是控制因子 \(h\) 如何选择？
     \[\mathbb{E} \boldsymbol{r}_{i} =\iota \gamma_{0}+\hat{C}_{g}\lambda_{g}+\hat{C}_{h}\lambda_{h}+\boldsymbol{\epsilon}\]
-\end{frame}
-
-\begin{frame}
-    \frametitle{SDF和SDF loading}
-    在随机贴现理论中，随机贴现因子 (SDF) 是一个随机变量，能够将资产的未来收益通过期望算子贴现为当期价格，也就是
-    \[p_{it} = \mathbb{E}_t [m_t(p_{it+1}+D_{it+1})] .\]
-    文献中 \parencite{Cochrane2009} 证明了SDF的存在性，并且推导出SDF可以表达为因子收益率的线性组合，如
-    \[m_t=1-\beta'(f_t-\mathbb{E}f_t)\]
-    \(\beta\) 即为因子对于随机贴现因子的载荷，也就是 SDF loading
-\end{frame}
-
-\begin{frame}
-    \frametitle{估计SDF loading}
-    实证估计SDF loading的文献一般会利用矩条件 \(\mathbb{E}(m_t r_t)=0\)，也就是SDF在时序上与资产的超额收益率独立，然后将SDF的因子结构代入，就得到
-    \begin{align*}
-        \mathbb{E} \left\{[1-\beta'(f_t-\mathbb{E}f_t)]r_t\right\}&=0 \\
-        \mathbb{E}r_t &= \beta' \mathbb{E}[f_t-\mathbb{E}f_t][r_t-\mathbb{E}r_t] \\
-        \beta &= (\Sigma \Sigma')^{-1} \Sigma \mathbb{E}r_t
-    \end{align*}
-    其中，\(\Sigma=\mathbb{E}[f_t-\mathbb{E}f_t][r_t-\mathbb{E}r_t]\)为因子和资产收益率在时序上的协方差矩阵，就是前述矩阵 \(C\) 的转置。因此，SDF loading实际上是将\textcolor{red}{资产在时序上的均值}对\textcolor{blue}{因子和资产在时序上的协方差}进行回归得到的系数，我没有完全搞懂其经济含义
 \end{frame}
 
 \begin{frame}
@@ -293,6 +273,29 @@
 
 \begin{frame}[allowframebreaks]
   \printbibliography
+\end{frame}
+
+\section{关于SDF}
+
+\begin{frame}[label=appendix1]
+    \frametitle{SDF和SDF loading}
+    在随机贴现理论中，随机贴现因子 (SDF) 是一个随机变量，能够将资产的未来收益通过期望算子贴现为当期价格，也就是
+    \[p_{it} = \mathbb{E}_t [m_t(p_{it+1}+D_{it+1})] .\]
+    文献中 \parencite{Cochrane2009} 证明了SDF的存在性，并且推导出SDF可以表达为因子收益率的线性组合，如
+    \[m_t=1-\beta'(f_t-\mathbb{E}f_t)\]
+    \(\beta\) 即为因子对于随机贴现因子的载荷，也就是 SDF loading
+\end{frame}
+
+\begin{frame}
+    \frametitle{估计SDF loading}
+    实证估计SDF loading的文献一般会利用矩条件 \(\mathbb{E}(m_t r_t)=0\)，也就是SDF在时序上与资产的超额收益率独立，然后将SDF的因子结构代入，就得到
+    \begin{align*}
+        \mathbb{E} \left\{[1-\beta'(f_t-\mathbb{E}f_t)]r_t\right\}&=0 \\
+        \mathbb{E}r_t &= \beta' \mathbb{E}[f_t-\mathbb{E}f_t][r_t-\mathbb{E}r_t] \\
+        \beta &= (\Sigma \Sigma')^{-1} \Sigma \mathbb{E}r_t
+    \end{align*}
+    其中，\(\Sigma=\mathbb{E}[f_t-\mathbb{E}f_t][r_t-\mathbb{E}r_t]\)为因子和资产收益率在时序上的协方差矩阵，就是前述矩阵 \(C\) 的转置。因此，SDF loading实际上是将\textcolor{red}{资产在时序上的均值}对\textcolor{blue}{因子和资产在时序上的协方差}进行回归得到的系数，我没有完全搞懂其经济含义
+    \hyperlink{main}{\beamerbutton{back}}
 \end{frame}
 
 
