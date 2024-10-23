@@ -25,4 +25,4 @@
 
 ## To Be Done
 
-- [ ] may need to add a explanation of SDF between page 7 and 8 of the slides
+- [x] may need to add a explanation of SDF between page 7 and 8 of the slides
